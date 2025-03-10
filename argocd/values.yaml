@@ -1,0 +1,26 @@
+argocd:
+  global:
+    domain: argocd.homelab.ftscode.de
+
+  configs:
+    params:
+      server.insecure: true
+
+    cm:
+      timeout.reconciliation: 60s
+
+  server:
+    # -- The number of server pods to run
+    replicas: 1
+
+    logLevel: debug
+
+    metrics:
+      enabled: true
+
+    extraArgs:
+      - --insecure
+
+  repoServer:
+    metrics:
+      enabled: true

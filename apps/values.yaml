@@ -1,0 +1,31 @@
+repo:
+  url: git@github-fkh:fkheinstein204/k8s-homelab.git
+  revision: main
+
+applications:
+  - name: argocd
+    app-namespace: argocd
+    project: default
+    namespace: argocd
+    path: infra/argocd
+    manifest-paths: /argocd
+    sync-wave: "-5"
+
+  - name: infrastructure
+    namespace: argocd
+    path: infra/infrastructure/
+    manifest-paths: /infrastructure/templates;/infrastructure/Chart.yaml;/infrastructure/values.yaml
+    sync-wave: "-4"
+
+#  - name: database
+#    namespace: argocd
+#    path: infra/database/
+#    manifest-paths: /database/templates;/database/Chart.yaml;/database/values.yaml
+#    sync-wave: "-4"
+
+
+  - name: root
+    app-namespace: argocd
+    namespace: argocd
+    path: apps
+    manifest-paths: /apps
