@@ -37,8 +37,34 @@ installArgoCd() {
 
   kubectl -n argocd create secret generic deployment-git-repo-credentials --from-literal=username=$GITHUB_USER --from-literal=password=$GITHUB_TOKEN
 
-  helm upgrade --install -n argocd argocd . -f values.yaml  --wait
+  helm upgrade --install --wait --timeout 15m --atomic --namespace argocd --create-namespace \
+    --repo https://argoproj.github.io/argo-helm argocd argo-cd --values - <<EOF
+dex:
+  enabled: false
 
+configs:
+  params:
+    server.insecure: true
+
+  cm:
+    timeout.reconciliation: 60s
+
+server:
+  # -- The number of server pods to run
+  replicas: 1
+
+  logLevel: debug
+
+  metrics:
+    enabled: true
+
+  extraArgs:
+    - --insecure
+
+repoServer:
+  metrics:
+    enabled: true
+EOF
 
   kubectl apply -f ${SCRIPT_DIR}/manifests/project.yaml
 
@@ -54,6 +80,7 @@ initArgo() {
 
   helm template apps/ | kubectl apply -f -
 }
+
 
 
 installArgoCd

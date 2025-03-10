@@ -6,6 +6,7 @@ applications:
   - name: argocd
     app-namespace: argocd
     project: default
+    server: https://10.128.1.60:6443
     namespace: argocd
     path: infra/argocd
     manifest-paths: /argocd
@@ -16,13 +17,6 @@ applications:
     path: infra/infrastructure/
     manifest-paths: /infrastructure/templates;/infrastructure/Chart.yaml;/infrastructure/values.yaml
     sync-wave: "-4"
-
-#  - name: database
-#    namespace: argocd
-#    path: infra/database/
-#    manifest-paths: /database/templates;/database/Chart.yaml;/database/values.yaml
-#    sync-wave: "-4"
-
 
   - name: root
     app-namespace: argocd
