@@ -8,13 +8,13 @@ applications:
     project: default
     server: https://10.128.1.60:6443
     namespace: argocd
-    path: infra/argocd
+    path: argocd
     manifest-paths: /argocd
     sync-wave: "-5"
 
   - name: infrastructure
     namespace: argocd
-    path: infra/infrastructure/
+    path: infrastructure/
     manifest-paths: /infrastructure/templates;/infrastructure/Chart.yaml;/infrastructure/values.yaml
     sync-wave: "-4"
 
