@@ -1,5 +1,5 @@
 repo:
-  url: git@github-fkh:fkheinstein204/k8s-homelab.git
+  url: git@github.com:fkheinstein204/k8s-homelab.git
   revision: main
 
 applications:
