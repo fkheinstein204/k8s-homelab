@@ -36,8 +36,8 @@ applications:
 
   - name: metallb
     namespace: metallb-system
-    path: infra/infrastructure/metallb
-    manifest-paths: /infra/infrastructure/metallb
+    path: infrastructure/metallb
+    manifest-paths: /infrastructure/metallb
     sync-wave: "-4"
     helm:
       enabled: true
@@ -46,8 +46,8 @@ applications:
 
   - name: traefik
     namespace: traefik
-    path: infra/infrastructure/traefik
-    manifest-paths: /infra/infrastructure/traefik
+    path: infrastructure/traefik
+    manifest-paths: /infrastructure/traefik
     sync-wave: "-4"
     helm:
       enabled: true
@@ -56,8 +56,8 @@ applications:
 
   - name: ingress-nginx
     namespace: ingress-nginx
-    path: infra/infrastructure/ingress-nginx
-    manifest-paths: /infra/infrastructure/ingress-nginx
+    path: infrastructure/ingress-nginx
+    manifest-paths: /infrastructure/ingress-nginx
     sync-wave: "-4"
     helm:
       enabled: true
