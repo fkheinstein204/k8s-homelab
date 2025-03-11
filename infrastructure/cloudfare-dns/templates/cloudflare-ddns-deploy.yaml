@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudflare-ddns
+  namespace: cert-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudflare-ddns
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: cloudflare-ddns
+    spec:
+      containers:
+        - env:
+            - name: TZ
+              value: "Europe/Berlin"
+            - name: DOMAINS
+              value: "dev.ftscode.de"
+            - name: PROXIED
+              value: "true"
+          envFrom:
+            - secretRef:
+                name: cloudflare-ddns-secret
+          image: favonia/cloudflare-ddns:latest
+          name: cloudflare-ddns
+
+      restartPolicy: Always

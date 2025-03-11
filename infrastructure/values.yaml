@@ -3,3 +3,43 @@ repo:
   revision: main
 
 applications:
+
+  - name: cert-manager
+    namespace: cert-manager
+    path: infrastructure/cert-manager
+    manifest-paths: /infrastructure/cert-manager
+    sync-wave: "0"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+
+  - name: ca-local-authority
+    namespace: cert-manager
+    path: infrastructure/ca-local-authority
+    manifest-paths: /infrastructure/ca-local-authority
+    sync-wave: "-5"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=false
+
+#  - name: cloudfare-dns
+#    namespace: cert-manager
+#    path: infrastructure/cloudfare-dns
+#    manifest-paths: /infrastructure/cloudfare-dns
+#    sync-wave: "-5"
+#    helm:
+#      enabled: true
+#    syncOptions:
+#      - CreateNamespace=true
+
+  - name: nfs-provisioner
+    namespace: nfs-provisioner
+    path: infrastructure/nfs-provisioner
+    manifest-paths: /infrastructure/nfs-provisioner
+    sync-wave: "-5"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true

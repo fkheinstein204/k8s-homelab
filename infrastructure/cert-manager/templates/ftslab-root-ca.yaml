@@ -1,0 +1,36 @@
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: ftslab-root-ca-issuer-selfsigned
+spec:
+  selfSigned: {}
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ftslab-root-ca
+  namespace: cert-manager
+spec:
+  isCA: true
+  commonName: ftslab-root-ca
+  secretName: ftslab-root-ca-secret
+  duration: 87600h # 10y
+  renewBefore: 78840h # 9y
+  privateKey:
+    algorithm: RSA
+    size: 4096
+  issuerRef:
+    name: ftslab-root-ca-issuer-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: ftslab-root-ca-issuer
+spec:
+  ca:
+    secretName: ftslab-root-ca-secret

@@ -1,0 +1,33 @@
+# Release Parameters
+release:
+  name: ca-local-authority
+  namespace: cert-manager
+
+# Settings CA
+ca:
+  commonName: "Local CA"
+  organization: "FtsCoDe GmbH"
+  organizationalUnits: "DevOps"
+  localities: "Koln"
+  provinces: "NRW"
+  countries: "DE"
+
+  validityDuration: "8760h"  # 1 year
+  renewBefore: "720h"        # 30 days
+  secretName: "root-ca-key-pair"
+
+# Certificates to create
+certificates:
+  - name: wheezy-tls
+    commonName: "wheezy.k8s-prod.local"
+    dnsNames:
+      - "wheezy.k8s-prod.local"
+  - name: open-webui-tls
+    commonName: "webui.k8s-prod.local"
+    dnsNames:
+      - "webui.prod.local"
+  - name: sidecar-injector-tls
+    commonName: "sidecar-injector.prod.svc"
+    dnsNames:
+      - "sidecar-injector.prod.svc"
+      - "sidecar-injector.prod.svc.cluster.local"

@@ -1,0 +1,15 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-homelab-ftscode-prod-de
+  namespace: traefik
+spec:
+  secretName: wildcard-homelab-ftscode-de-prod-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "*.homelab.ftscode.de"
+  dnsNames:
+  - "homelab.ftscode.de"
+  - "*.homelab.ftscode.de"
