@@ -1,0 +1,16 @@
+repo:
+  url: https://github.com/fkheinstein204/k8s-homelab.git
+  revision: main
+
+
+applications:
+
+  - name: mariadb
+    namespace: database
+    path: database/mariadb
+    manifest-paths: /database/mariadb
+    sync-wave: "-1"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,20 @@
+---
+# Client service for connecting to any MySQL instance for reads.
+# For writes, you must instead connect to the primary: mysql-0.mysql.
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-read
+  labels:
+    app.kubernetes.io/component: primary
+    app.kubernetes.io/instance: mariadb
+    app.kubernetes.io/name: mariadb
+    readonly: "true"
+spec:
+  ports:
+  - name: mysql
+    port: 3306
+  selector:
+    app.kubernetes.io/component: primary
+    app.kubernetes.io/instance: mariadb
+    app.kubernetes.io/name: mariadb

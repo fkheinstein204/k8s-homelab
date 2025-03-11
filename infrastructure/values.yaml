@@ -83,3 +83,23 @@ applications:
       enabled: true
     syncOptions:
       - CreateNamespace=false
+
+  - name: longhorn
+    namespace: longhorn-system
+    path: infrastructure/longhorn
+    manifest-paths: /infrastructure/longhorn
+    sync-wave: "-5"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+
+  - name: minio
+    namespace: minio-storage
+    path: infrastructure/minio-s3
+    manifest-paths: /infrastructure/minio-s3
+    sync-wave: "-4"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true

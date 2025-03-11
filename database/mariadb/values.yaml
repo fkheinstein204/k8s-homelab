@@ -1,0 +1,8 @@
+mariadb:
+  primary:
+    persistence:
+      existingClaim: mariadb-pvc
+  auth:
+    database: roomlab
+    username: wheezy.fts
+    existingSecret: mariadb-credentials

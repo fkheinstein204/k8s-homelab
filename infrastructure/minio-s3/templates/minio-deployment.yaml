@@ -1,0 +1,59 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: minio-app
+  name: minio-deployment
+  namespace: minio-storage
+spec:
+  selector:
+    matchLabels:
+      app: minio-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: minio-app
+    spec:
+      containers:
+        - resources:
+            limits:
+              cpu: 250m
+              memory: 1Gi
+            requests:
+              cpu: 20m
+              memory: 100Mi
+          name: minio
+          image: quay.io/minio/minio:latest
+          command:
+          - /bin/bash
+          - -c
+          args:
+          - minio server /data --console-address :9090
+          ports:
+          - containerPort: 9000
+            name: web
+            protocol: TCP
+          - containerPort: 9090
+            protocol: TCP
+            name: api
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+          - mountPath: /data
+            name: data-volume
+          env:
+          - name: MINIO_ROOT_USER
+            valueFrom:
+              secretKeyRef:
+                name: minio-credentials
+                key: MINIO_ROOT_USER
+          - name: MINIO_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: minio-credentials
+                key: MINIO_ROOT_PASSWORD
+      volumes:
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: minio-pvc

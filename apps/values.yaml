@@ -14,6 +14,8 @@ applications:
 
   - name: infrastructure
     namespace: argocd
+    project: default
+    server: https://10.128.1.60:6443
     path: infrastructure/
     manifest-paths: /infrastructure/templates;/infrastructure/Chart.yaml;/infrastructure/values.yaml
     sync-wave: "-4"
