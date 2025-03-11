@@ -19,13 +19,13 @@ ca:
 # Certificates to create
 certificates:
   - name: wheezy-tls
-    commonName: "wheezy.k8s-prod.local"
+    commonName: "wheezy.k8s-dev.lab"
     dnsNames:
-      - "wheezy.k8s-prod.local"
+      - "wheezy.k8s-dev.local"
   - name: open-webui-tls
-    commonName: "webui.k8s-prod.local"
+    commonName: "webui.k8s-dev.lab"
     dnsNames:
-      - "webui.prod.local"
+      - "webui.k8s-dev.lab"
   - name: sidecar-injector-tls
     commonName: "sidecar-injector.prod.svc"
     dnsNames:
