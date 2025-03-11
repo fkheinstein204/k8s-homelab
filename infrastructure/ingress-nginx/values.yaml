@@ -26,4 +26,4 @@ ingress-nginx:
 
 
     extraArgs:
-      - --enable-ssl-passthrough=true
+      - --enable-ssl-passthrough
