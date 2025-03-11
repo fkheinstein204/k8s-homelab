@@ -10,7 +10,7 @@ traefik:
     access:
       enabled: true
 
-  #tlsStore:
-  #  default:
-  #    defaultCertificate:
-  #      secretName: wildcard-homelab-ftscode-de-prod-tls
+  tlsStore:
+    default:
+      defaultCertificate:
+        secretName: wildcard-homelab-ftscode-de-prod-tls
