@@ -2,6 +2,12 @@ argocd:
   global:
     domain: argocd.homelab.ftscode.de
 
+  dex:
+    enabled: false
+
+
+
+
   configs:
     params:
       server.insecure: true
@@ -20,6 +26,23 @@ argocd:
 
     extraArgs:
       - "--insecure"
+
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        cert-manager.io/common-name: "argocd.homelab.ftscode.de"
+        nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+      extraTls:
+        - hosts:
+            - argocd.homelab.ftscode.de
+          secretName: argocd-cert
+          
+    resources:
+      requests:
+        cpu: 50m
+        memory: 64Mi
 
   repoServer:
     metrics:
