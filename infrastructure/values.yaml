@@ -34,6 +34,36 @@ applications:
 #    syncOptions:
 #      - CreateNamespace=true
 
+  - name: metallb
+    namespace: metallb-system
+    path: infra/infrastructure/metallb
+    manifest-paths: /infra/infrastructure/metallb
+    sync-wave: "-4"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+
+  - name: traefik
+    namespace: traefik
+    path: infra/infrastructure/traefik
+    manifest-paths: /infra/infrastructure/traefik
+    sync-wave: "-4"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+
+  - name: ingress-nginx
+    namespace: ingress-nginx
+    path: infra/infrastructure/ingress-nginx
+    manifest-paths: /infra/infrastructure/ingress-nginx
+    sync-wave: "-4"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+
   - name: nfs-provisioner
     namespace: nfs-provisioner
     path: infrastructure/nfs-provisioner
