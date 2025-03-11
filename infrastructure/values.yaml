@@ -73,3 +73,13 @@ applications:
       enabled: true
     syncOptions:
       - CreateNamespace=true
+
+  - name: sealed-secrets
+    namespace: kube-system
+    path: infrastructure/sealed-secrets
+    manifest-paths: /infrastructure/sealed-secrets
+    sync-wave: "-5"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=false
