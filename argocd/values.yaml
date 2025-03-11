@@ -11,7 +11,7 @@ argocd:
 
   server:
     # -- The number of server pods to run
-    replicas: 1
+    replicas: 2
 
     logLevel: debug
 
@@ -19,7 +19,7 @@ argocd:
       enabled: true
 
     extraArgs:
-      - --insecure
+      - "--insecure"
 
   repoServer:
     metrics:
