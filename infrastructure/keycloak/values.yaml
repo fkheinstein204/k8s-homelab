@@ -13,7 +13,7 @@ keycloak:
   proxyHeaders: xforwarded
 
   externalDatabase:
-    existingSecret: keycloak-database-secret
+    existingSecret: postgresql-keycloak-credentials
     host: "postgresql-primary-hl.database.svc.k8s-dev.devops.lab"
     port: 5432
     user: "keycloak"
