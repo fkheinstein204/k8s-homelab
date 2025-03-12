@@ -14,3 +14,13 @@ applications:
       enabled: true
     syncOptions:
       - CreateNamespace=true
+
+  - name: postgresql
+    namespace: database
+    path: database/postgresql
+    manifest-paths: /database/postgresql
+    sync-wave: "-1"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true

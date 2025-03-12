@@ -1,0 +1,19 @@
+postgresql:
+  enabled: true
+  auth:
+    database: roomlab
+    username: ldap.fts20
+    existingSecret: postgresql-credentials
+
+  architecture: standalone
+  
+  primary:
+    persistence:
+      enabled: true
+      existingClaim: postgresql-pvc
+      size: 4Gi
+  readReplicas:
+    replicaCount: 2
+    persistence:
+      existingClaim: postgresql-pvc
+      size: 4Gi
