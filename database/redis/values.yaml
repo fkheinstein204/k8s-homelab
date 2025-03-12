@@ -18,7 +18,7 @@ redis:
       type: ClusterIP
 
   replica:
-    replicaCount: 2
+    replicaCount: 3
     persistence:
       enabled: true
       storageClass: "nfs-k8sdev-client"
