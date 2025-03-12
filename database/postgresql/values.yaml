@@ -5,7 +5,7 @@ postgresql:
     username: keycloak
     existingSecret: postgresql-credentials
 
-  architecture: standalone
+  architecture: replication
 
   primary:
     persistence:
