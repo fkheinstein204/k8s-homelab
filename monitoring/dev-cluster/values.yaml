@@ -6,7 +6,7 @@ repo:
 applications:
 
   - name: metrics-server-dev
-    namespace: kube-system
+    namespace: metrics-server
     path: monitoring/dev-cluster/metrics-server
     manifest-paths: /monitoring/dev-cluster/metrics-server
     sync-wave: "-1"
