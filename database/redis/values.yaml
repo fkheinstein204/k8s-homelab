@@ -4,7 +4,8 @@ redis:
 
   auth:
     enabled: true
-    existingSecret: "nfs-k8sdev-client"
+    sentinel: true
+    existingSecret: "redis-credentials"
 
   architecture: replication  # Enables master-replica setup
 
@@ -24,3 +25,10 @@ redis:
       size: 5Gi
     service:
       type: ClusterIP
+
+  sentinel:
+    enabled: true
+    persistence:
+      enabled: true
+      storageClass: "nfs-k8sdev-client"
+      size: 2Gi
