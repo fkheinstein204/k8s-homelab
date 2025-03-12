@@ -8,6 +8,7 @@ postgresql:
       userPasswordKey: password
       adminPasswordKey: postgresql-password
       replicationPasswordKey: replication-password  # Required for replication
+      existingSecret: postgresql-credentials
 
   architecture: replication
 
