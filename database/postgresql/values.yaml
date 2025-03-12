@@ -1,11 +1,8 @@
 postgresql:
   enabled: true
   auth:
-    postgresPassword: postgresql-password
-    replicationPassword: replication-password  # Required for replication
     database: keycloak
     username: keycloak
-    password: password
     existingSecret: postgresql-credentials
 
   architecture: replication
