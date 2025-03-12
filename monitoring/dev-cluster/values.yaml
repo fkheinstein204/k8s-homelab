@@ -1,0 +1,16 @@
+repo:
+  url: https://github.com/fkheinstein204/k8s-homelab.git
+  revision: main
+
+
+applications:
+
+  - name: dev-metrics-server
+    namespace: metrics-server
+    path: monitoring/dev-cluster/metrics-server
+    manifest-paths: /monitoring/dev-cluster/metrics-server
+    sync-wave: "-1"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true

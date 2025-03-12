@@ -27,6 +27,24 @@ applications:
     manifest-paths: /database/templates;/database/Chart.yaml;/database/values.yaml
     sync-wave: "-4"
 
+
+  - name: prod-monitoring
+    namespace: argocd
+    path: monitoring/prod-cluster/
+    manifest-paths: /monitoring/prod-cluster/templates;/monitoring/prod-cluster/Chart.yaml;/monitoring/prod-cluster/values.yaml
+    sync-wave: "-4"
+
+
+  - name: dev-monitoring
+    namespace: argocd
+    path: monitoring/dev-cluster/
+    manifest-paths: /monitoring/dev-cluster/templates;/monitoring/dev-cluster/Chart.yaml;/monitoring/dev-cluster/values.yaml
+    sync-wave: "-4"
+
+
+
+
+
   - name: root
     app-namespace: argocd
     namespace: argocd

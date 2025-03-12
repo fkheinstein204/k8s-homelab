@@ -1,0 +1,3 @@
+apiVersion: v2
+name: dev-monitoring
+version: 1.0.0
