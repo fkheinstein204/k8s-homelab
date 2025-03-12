@@ -4,6 +4,10 @@ postgresql:
     database: keycloak
     username: keycloak
     existingSecret: postgresql-credentials
+    secretKeys:
+      userPasswordKey: password
+      adminPasswordKey: postgresql-password
+      replicationPasswordKey: replication-password  # Required for replication
 
   architecture: replication
 
@@ -12,11 +16,13 @@ postgresql:
       enabled: true
       existingClaim: postgresql-pvc
       size: 10Gi
-  replication:
-    enabled: true
-    readReplicas: 2
+    resources:
+      requests:
+        cpu: 1
+        memory: 1Gi
+
   readReplicas:
+    replicaCount: 1
     persistence:
-      enabled: false
       size: 10Gi
 
