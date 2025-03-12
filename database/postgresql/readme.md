@@ -47,10 +47,10 @@ podman run --rm \
     --env PGPASSWORD=${POSTGRES_PASSWORD} \
     --entrypoint psql \
     -it docker.io/library/postgres:15.2-alpine3.17 \
-    --host host.containers.internal \
+    --host 10.128.1.60 \
     --port 32543 \
-    --username ldap.fts20 \
-    --dbname roomlab \
+    --username keycloak \
+    --dbname keycloak \
     --command 'SELECT datname FROM pg_database;'
 
 ```

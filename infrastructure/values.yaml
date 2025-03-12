@@ -103,3 +103,13 @@ applications:
       enabled: true
     syncOptions:
       - CreateNamespace=true
+
+  - name: keycloak
+    namespace: keycloak
+    path: infrastructure/keycloak
+    manifest-paths: /infrastructure/keycloak
+    sync-wave: "-4"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
