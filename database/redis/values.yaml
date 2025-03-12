@@ -1,45 +1,26 @@
 redis:
-  architecture: replication
+  global:
+    storageClass: "nfs-k8sdev-client"
+
   auth:
     enabled: true
-    sentinel: true
-    existingSecret: redis-credentials
+    existingSecret: "nfs-k8sdev-client"
+
+  architecture: replication  # Enables master-replica setup
+
   master:
-    count: 1
-    disableCommands:
-      - FLUSHDB
-      - FLUSHALL
     persistence:
-      enabled: false
+      enabled: true
+      storageClass: "nfs-k8sdev-client"
+      size: 5Gi
+    service:
+      type: ClusterIP
+
   replica:
-    replicaCount: 3
-    disableCommands:
-      - FLUSHDB
-      - FLUSHALL
+    replicaCount: 2
     persistence:
-      enabled: false
-  image:
-    registry: docker.io
-    pullPolicy: IfNotPresent
-  sentinel:
-    enabled: false
-    persistence:
-      enabled: false
-    image:
-      registry: docker.io
-      pullPolicy: IfNotPresent
-  metrics:
-    enabled: false
-    image:
-      registry: docker.io
-      pullPolicy: IfNotPresent
-  volumePermissions:
-    enabled: false
-    image:
-      registry: docker.io
-      pullPolicy: IfNotPresent
-  sysctl:
-    enabled: false
-    image:
-      registry: docker.io
-      pullPolicy: IfNotPresent
+      enabled: true
+      storageClass: "nfs-k8sdev-client"
+      size: 5Gi
+    service:
+      type: ClusterIP
