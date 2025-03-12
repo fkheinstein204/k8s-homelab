@@ -1,14 +1,12 @@
 postgresql:
   enabled: true
   auth:
+    postgresPassword: postgresql-password
+    replicationPassword: replication-password  # Required for replication
     database: keycloak
     username: keycloak
+    password: password
     existingSecret: postgresql-credentials
-    secretKeys:
-      userPasswordKey: password
-      adminPasswordKey: postgresql-password
-      replicationPasswordKey: replication-password  # Required for replication
-      existingSecret: postgresql-credentials
 
   architecture: replication
 
@@ -16,14 +14,26 @@ postgresql:
     persistence:
       enabled: true
       existingClaim: postgresql-pvc
-      size: 10Gi
+      size: "4Gi"
     resources:
+      limits:
+        memory: "1Gi"
+        cpu: "1000m"
       requests:
-        cpu: 1
-        memory: 1Gi
+        memory: "1Gi"
+        cpu: "1000m"
+
 
   readReplicas:
-    replicaCount: 1
+    replicaCount: 2  # This gives us 3 nodes total (1 primary + 2 replicas)
+    resources:
+      limits:
+        memory: "1Gi"
+        cpu: "1000m"
+      requests:
+        memory: "1Gi"
+        cpu: "1000m"
     persistence:
-      size: 10Gi
-
+      enabled: true
+      existingClaim: postgresql-pvc
+      size: "4Gi"
