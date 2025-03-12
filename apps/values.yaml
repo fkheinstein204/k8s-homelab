@@ -20,6 +20,13 @@ applications:
     manifest-paths: /infrastructure/templates;/infrastructure/Chart.yaml;/infrastructure/values.yaml
     sync-wave: "-4"
 
+
+  - name: database
+    namespace: argocd
+    path: database/
+    manifest-paths: /database/templates;/database/Chart.yaml;/database/values.yaml
+    sync-wave: "-4"
+
   - name: root
     app-namespace: argocd
     namespace: argocd
