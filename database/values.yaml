@@ -24,3 +24,14 @@ applications:
       enabled: true
     syncOptions:
       - CreateNamespace=true
+
+
+  - name: redis
+    namespace: database
+    path: database/redis
+    manifest-paths: /database/redis
+    sync-wave: "-1"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true

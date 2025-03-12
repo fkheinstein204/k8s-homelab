@@ -19,7 +19,7 @@ Create secret for credentials
  kubeseal --controller-name=sealed-secrets --controller-namespace=kube-system --secret-file secrets/raw/postgresql-credentials.yaml --sealed-secret-file secrets/postgresql-credentials-sealed.yaml
 
   # Option 2
- kubeseal --controller-name=sealed-secrets --controller-namespace=kube-system --format yaml < minio-credentials.yaml > minio-credentials-sealed.yaml
+ kubeseal --controller-name=sealed-secrets --controller-namespace=kube-system --format yaml < postgresql-credentials.yaml > postgresql-credentials-sealed.yaml
 
 ```
 
