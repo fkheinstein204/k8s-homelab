@@ -5,7 +5,7 @@ repo:
 
 applications:
 
-  - name: metrics-server-prod
+  - name: metrics-server
     namespace: metrics-server
     path: monitoring/prod-cluster/metrics-server
     manifest-paths: /monitoring/prod-cluster/metrics-server
