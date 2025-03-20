@@ -113,3 +113,13 @@ applications:
       enabled: true
     syncOptions:
       - CreateNamespace=true
+
+  - name: hbr-keycloak
+    namespace: hbr-keycloak
+    path: infrastructure/hbr-keycloak
+    manifest-paths: /infrastructure/hbr-keycloak
+    sync-wave: "-4"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
