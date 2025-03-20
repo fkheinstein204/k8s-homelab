@@ -1,8 +1,8 @@
 postgresql:
   enabled: true
   auth:
-    database: keycloak
-    username: keycloak
+    database: postgresql-db
+    username: admin
     existingSecret: postgresql-credentials
 
   architecture: replication
