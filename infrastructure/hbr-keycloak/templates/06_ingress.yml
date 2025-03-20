@@ -6,10 +6,10 @@ metadata:
 spec:
   tls:
     - hosts:
-      - localhost
+      - localhost.keycloak.lab
       secretName: tls-secret
   rules:
-  - host: localhost
+  - host: localhost.keycloak.lab
     http:
       paths:
       - path: /
