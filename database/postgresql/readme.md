@@ -34,8 +34,8 @@ podman run --rm \
     -it docker.io/library/postgres:15.2-alpine3.17 \
     --host host.containers.internal \ 
     --port 32543 \
-    --username postgres \
-    --dbname postgres \
+    --username admin \
+    --dbname postgresql-db \
     --command 'SELECT datname FROM pg_database;'
 ```
 
@@ -49,14 +49,18 @@ podman run --rm \
     -it docker.io/library/postgres:15.2-alpine3.17 \
     --host 10.128.1.60 \
     --port 32543 \
-    --username keycloak \
-    --dbname keycloak \
+    --username admin \
+    --dbname postgresql-db \
     --command 'SELECT datname FROM pg_database;'
 
 
+
 POSTGRES_PASSWORD=$(kubectl -n database get secret postgresql-credentials -o jsonpath='{.data.postgres-password}' | base64 -d)
+kubectl -n database exec postgresql-primary-0 -- env PGPASSWORD=${POSTGRES_PASSWORD} psql -U admin -d postgresql-db  -c "SELECT datname FROM pg_database;"
+
+
 kubectl -n database exec postgresql-primary-0 -- env PGPASSWORD=${POSTGRES_PASSWORD} psql -U keycload -d db  -c "CREATE DATABASE keycloak-db;"
-kubectl -n database exec postgresql-primary-0 -- PGPASSWORD=${POSTGRES_PASSWORD} psql -U  -d db -c "CREATE USER keycloak-admin WITH PASSWORD 'Pa33w0rd!';"
-kubectl -n database exec postgresql-primary-0 -- PGPASSWORD=${POSTGRES_PASSWORD} psql -U admin -d db -c "GRANT ALL PRIVILEGES ON DATABASE keycloak-db TO keycloak-admin;"
+kubectl -n database exec postgresql-primary-0 -- env PGPASSWORD=${POSTGRES_PASSWORD} psql -U  -d db -c "CREATE USER keycloak-admin WITH PASSWORD 'Pa33w0rd!';"
+kubectl -n database exec postgresql-primary-0 -- env PGPASSWORD=${POSTGRES_PASSWORD} psql -U admin -d db -c "GRANT ALL PRIVILEGES ON DATABASE keycloak-db TO keycloak-admin;"
 
 ```

@@ -1,8 +1,8 @@
 postgresql:
   enabled: true
   auth:
-    database: postgresql-db
-    username: admin
+    enablePostgresUser: true
+    replicationUsername: repl_user
     existingSecret: postgresql-credentials
 
   architecture: replication
@@ -15,10 +15,10 @@ postgresql:
     resources:
       limits:
         memory: "1Gi"
-        cpu: "1000m"
+        cpu: "500m"
       requests:
         memory: "1Gi"
-        cpu: "1000m"
+        cpu: "500m"
 
 
   readReplicas:
@@ -26,10 +26,10 @@ postgresql:
     resources:
       limits:
         memory: "1Gi"
-        cpu: "1000m"
+        cpu: "500m"
       requests:
         memory: "1Gi"
-        cpu: "1000m"
+        cpu: "400m"
     persistence:
       enabled: true
       existingClaim: postgresql-pvc
