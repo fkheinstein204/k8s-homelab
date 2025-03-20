@@ -37,7 +37,6 @@ spec:
         image: quay.io/keycloak/keycloak:25.0.5
         args:
         - start-dev
-        - --import-realm
         - --proxy-headers=xforwarded
 
         env:
