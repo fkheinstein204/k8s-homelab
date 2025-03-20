@@ -37,11 +37,8 @@ spec:
         image: quay.io/keycloak/keycloak:25.0.5
         args:
         - start-dev
-        - --proxy-headers=xforwarded
 
         env:
-        - name: KEYCLOAK_STATISTICS
-          value: all
         - name: KEYCLOAK_ADMIN
           value: admin
         - name: KEYCLOAK_ADMIN_PASSWORD
@@ -62,7 +59,7 @@ spec:
         - name: KC_DB
           value: postgres
         - name: KC_DB_URL
-          value: jdbc:postgresql://postgresql-primary-hl.database.svc.k8s-dev.devops.lab:5432/keycloakdb
+          value: jdbc:postgresql://postgresql-primary-hl.database.svc.k8s-dev.devops.lab/keycloakdb
         - name: KC_DB_USERNAME
           value: keycloak
         - name: KC_DB_PASSWORD
