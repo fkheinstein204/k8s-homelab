@@ -1,5 +1,34 @@
 
-### Postgresql Setup
+# Postgresql Setup
+
+
+## Create user and database
+```
+echo $(kubectl get secret --namespace database postgresql-credentials -o jsonpath="{.data.postgres-password}" | base64 -d)
+
+kubectl exec -it  postgresql-primary-0  -n database -- psql -U postgres
+```
+
+```
+CREATE DATABASE <NAME>;
+CREATE USER <NAME> WITH ENCRYPTED PASSWORD '<PASSWORD>';
+GRANT ALL PRIVILEGES ON DATABASE <NAME> TO <NAME>;
+ALTER DATABASE <NAME> OWNER TO <NAME>;
+```
+
+# Upgrade
+Dump database to .sql file.
+```
+k port-forward -n database  postgresql-primary-0  5432:5432
+pg_dumpall -U postgres -h localhost -p 5432 > dump.sql
+```
+
+
+```
+psql -h localhost -p 5432 -U postgres < dump.sql
+```
+
+
 
 
 Create secret for credentials
@@ -56,11 +85,16 @@ podman run --rm \
 
 
 POSTGRES_PASSWORD=$(kubectl -n database get secret postgresql-credentials -o jsonpath='{.data.postgres-password}' | base64 -d)
-kubectl -n database exec postgresql-primary-0 -- env PGPASSWORD=${POSTGRES_PASSWORD} psql -U admin -d postgresql-db  -c "SELECT datname FROM pg_database;"
+kubectl -n database exec postgresql-primary-0 -- env PGPASSWORD=${POSTGRES_PASSWORD} psql -U postgres 
 
 
 kubectl -n database exec postgresql-primary-0 -- env PGPASSWORD=${POSTGRES_PASSWORD} psql -U keycload -d db  -c "CREATE DATABASE keycloak-db;"
 kubectl -n database exec postgresql-primary-0 -- env PGPASSWORD=${POSTGRES_PASSWORD} psql -U  -d db -c "CREATE USER keycloak-admin WITH PASSWORD 'Pa33w0rd!';"
 kubectl -n database exec postgresql-primary-0 -- env PGPASSWORD=${POSTGRES_PASSWORD} psql -U admin -d db -c "GRANT ALL PRIVILEGES ON DATABASE keycloak-db TO keycloak-admin;"
+
+
+
+echo $(kubectl get secret --namespace database postgresql-credentials -o jsonpath="{.data.postgres-password}" | base64 -d)
+kubectl exec -it postgresql-0 -n database -- psql -U postgres
 
 ```

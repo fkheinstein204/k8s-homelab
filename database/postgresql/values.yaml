@@ -14,22 +14,22 @@ postgresql:
       size: "4Gi"
     resources:
       limits:
-        memory: "1Gi"
-        cpu: "500m"
+        memory: "256Mi"
+        cpu: "200m"
       requests:
-        memory: "1Gi"
-        cpu: "500m"
+        memory: "256Mi"
+        cpu: "200m"
 
 
   readReplicas:
     replicaCount: 2  # This gives us 3 nodes total (1 primary + 2 replicas)
     resources:
       limits:
-        memory: "1Gi"
-        cpu: "500m"
+        memory: "256Mi"
+        cpu: "200m"
       requests:
-        memory: "1Gi"
-        cpu: "400m"
+        memory: "256Mi"
+        cpu: "200m"
     persistence:
       enabled: true
       existingClaim: postgresql-pvc
