@@ -1,0 +1,27 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: keycloak-ca
+  namespace: hr-keycloak
+spec:
+  isCA: true
+  commonName: keycloak-root-ca
+  secretName: keycloak-root-ca-secret
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  issuerRef:
+    name: ftslab-root-ca-issuer-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: keycloak-ca-issuer
+  namespace: hr-keycloak
+spec:
+  ca:
+    secretName: keycloak-root-ca-secret

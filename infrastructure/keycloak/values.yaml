@@ -22,38 +22,6 @@ keycloak:
     database: "keycloak"
 
 
-  extraEnvVars:
-    - name: KC_HOSTNAME
-      value: "https://keycloak.homelab.ftscode.de"
-    - name: KC_HOSTNAME_ADMIN
-      value: "https://keycloak-admin.homelab.ftscode.de"
-    - name: KC_HOSTNAME_BACKCHANNEL_DYNAMIC
-      value: "true"
-
-  ingress:
-    enabled: true
-    ingressClassName: nginx
-    hostname: keycloak.homelab.ftscode.de
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-production
-      cert-manager.io/common-name: keycloak.homelab.ftscode.de
-    extraTls:
-      - hosts:
-          - keycloak.homelab.ftscode.de
-        secretName: keycloak-cert
-
-  adminIngress:
-    enabled: true
-    ingressClassName: nginx
-    hostname: keycloak-admin.homelab.ftscode.de
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-production
-      cert-manager.io/common-name: keycloak-admin.homelab.ftscode.de
-    extraTls:
-      - hosts:
-          - keycloak-admin.homelab.ftscode.de
-        secretName: keycloak-admin-cert
-
 
   postgresql:
       enabled: false
