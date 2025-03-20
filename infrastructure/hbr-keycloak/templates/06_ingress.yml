@@ -4,6 +4,7 @@ metadata:
   name: keycloak
   namespace: hbr-keycloak
 spec:
+  ingressClassName: nginx
   tls:
     - hosts:
       - localhost.keycloak.lab
