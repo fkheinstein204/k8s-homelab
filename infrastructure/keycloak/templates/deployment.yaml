@@ -40,6 +40,12 @@ spec:
         - --proxy-headers=xforwarded
 
         env:
+        - name: KEYCLOAK_STATISTICS
+          value: all
+        - name: JAVA_OPTS_APPEND
+          value: >-
+            -Djgroups.dns.query={{ include "keycloak.fullname" . }}-headless
+
         - name: KEYCLOAK_ADMIN
           value: admin
         - name: KEYCLOAK_ADMIN_PASSWORD
@@ -60,7 +66,7 @@ spec:
         - name: KC_DB
           value: postgres
         - name: KC_DB_URL
-          value: jdbc:postgresql://postgresql-primary-hl.database.svc.k8s-dev.devops.lab:5432/keycloak
+          value: jdbc:postgresql://postgresql-primary-hl.database.svc.k8s-dev.devops.lab:5432/keycloakdb
         - name: KC_DB_USERNAME
           value: keycloak
         - name: KC_DB_PASSWORD
