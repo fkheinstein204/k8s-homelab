@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: ingress-nginx-pod
+  name: ingress-nginx-pod
+  namespace: ingress
+spec:
+  containers:
+  - image: nginx
+    name: nginx

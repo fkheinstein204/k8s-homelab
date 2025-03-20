@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: ingress-httpd-pod
+  name: ingress-httpd-pod
+  namespace: ingress
+spec:
+  containers:
+  - image: httpd
+    name: httpd
