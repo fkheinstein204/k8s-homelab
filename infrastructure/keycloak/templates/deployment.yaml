@@ -42,10 +42,6 @@ spec:
         env:
         - name: KEYCLOAK_STATISTICS
           value: all
-        - name: JAVA_OPTS_APPEND
-          value: >-
-            -Djgroups.dns.query={{ include "keycloak.fullname" . }}-headless
-
         - name: KEYCLOAK_ADMIN
           value: admin
         - name: KEYCLOAK_ADMIN_PASSWORD
