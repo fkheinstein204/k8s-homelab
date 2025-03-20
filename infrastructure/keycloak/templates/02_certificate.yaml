@@ -2,11 +2,11 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: keycloak-homelab-ca
+  name: keycloak-auth0-ca
   namespace: keycloak
 spec:
   isCA: false
-  secretName: keycloak-server-tls
+  secretName: keycloak-auth0-tls
   duration: 2160h
   renewBefore: 360h
   subject:
@@ -27,9 +27,9 @@ spec:
   usages:
     - server auth
     - client auth
-  commonName: "keycloak.homelab.ftscode.de"
+  commonName: "keycloak.auth0.ftscode.de"
   dnsNames:
-    - "keycloak.homelab.ftscode.de"
+    - "keycloak.auth0.ftscode.de"
   issuerRef:
     name: keycloak-ca-issuer
     kind: Issuer

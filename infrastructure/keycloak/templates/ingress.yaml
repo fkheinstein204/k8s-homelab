@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: keycloak-fts-tls
+  namespace: hbr-keycloak
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - keycloak.auth0.ftscode.de
+      secretName: keycloak-auth0-tls
+  rules:
+  - host: keycloak.auth0.ftscode.de
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: keycloak
+            port:
+              number: 443
