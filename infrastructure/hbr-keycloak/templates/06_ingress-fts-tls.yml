@@ -7,10 +7,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - keycloak.homelab.ftscode.de
+      - keycloak.auth.ftscode.de
       secretName: keycloak-server-tls
   rules:
-  - host: keycloak.homelab.ftscode.de
+  - host: keycloak.auth.ftscode.de
     http:
       paths:
       - path: /

@@ -2,7 +2,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: keycloak-homelab-ca
+  name: keycloak-auth-ca
   namespace: hbr-keycloak
 spec:
   isCA: false
@@ -27,9 +27,9 @@ spec:
   usages:
     - server auth
     - client auth
-  commonName: "keycloak.homelab.ftscode.de"
+  commonName: "keycloak.auth.ftscode.de"
   dnsNames:
-    - "keycloak.homelab.ftscode.de"
+    - "keycloak.auth.ftscode.de"
   issuerRef:
     name: keycloak-ca-issuer
     kind: Issuer
