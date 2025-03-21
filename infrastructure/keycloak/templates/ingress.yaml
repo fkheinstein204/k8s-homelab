@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: keycloak-fts-tls
-  namespace: hbr-keycloak
+  namespace: keycloak
 spec:
   ingressClassName: nginx
   tls:
