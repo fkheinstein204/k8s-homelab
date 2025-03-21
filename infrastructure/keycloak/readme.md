@@ -25,4 +25,10 @@ Create secret for credentials
  kubeseal --controller-name=sealed-secrets --controller-namespace=kube-system --secret-file secrets/raw/keycloak-admin-credentials.yaml --sealed-secret-file secrets/keycloak-admin-credentials-sealed.yaml
 
 
+
+CREATE DATABASE keycloak;
+CREATE USER keycloak WITH ENCRYPTED PASSWORD 'IHJ+85cZttwhb20T09XwG5vpjWt0b/4f7PxvwWcPHOE=';
+GRANT ALL PRIVILEGES ON DATABASE keycloak TO keycloak;
+ALTER DATABASE keycloak OWNER TO keycloak;
+
 ```

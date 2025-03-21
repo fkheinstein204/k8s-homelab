@@ -1,5 +1,8 @@
 postgresql:
   enabled: true
+
+  clusterDomain: k8s-dev.devops.lab
+
   auth:
     enablePostgresUser: true
     replicationUsername: repl_user
@@ -17,22 +20,22 @@ postgresql:
       size: "4Gi"
     resources:
       limits:
-        memory: "256Mi"
-        cpu: "200m"
+        memory: "512Mi"
+        cpu: "500m"
       requests:
-        memory: "256Mi"
-        cpu: "200m"
+        memory: "512Mi"
+        cpu: "500m"
 
 
   readReplicas:
     replicaCount: 2  # This gives us 3 nodes total (1 primary + 2 replicas)
     resources:
       limits:
-        memory: "256Mi"
-        cpu: "100m"
+        memory: "512Mi"
+        cpu: "500m"
       requests:
-        memory: "256Mi"
-        cpu: "100m"
+        memory: "512Mi"
+        cpu: "500m"
     persistence:
       enabled: true
       existingClaim: postgresql-pvc

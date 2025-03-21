@@ -88,7 +88,7 @@ POSTGRES_PASSWORD=$(kubectl -n database get secret postgresql-credentials -o jso
 kubectl -n database exec postgresql-primary-0 -- env PGPASSWORD=${POSTGRES_PASSWORD} psql -U postgres 
 
 
-kubectl -n database exec postgresql-primary-0 -- env PGPASSWORD=${POSTGRES_PASSWORD} psql -U keycload -d db  -c "CREATE DATABASE keycloak-db;"
+kubectl -n database exec postgresql-primary-0 -- env PGPASSWORD=${POSTGRES_PASSWORD} psql -U keycload -d db  -c "CREATE DATABASE keycloakdb;"
 kubectl -n database exec postgresql-primary-0 -- env PGPASSWORD=${POSTGRES_PASSWORD} psql -U  -d db -c "CREATE USER keycloak-admin WITH PASSWORD 'Pa33w0rd!';"
 kubectl -n database exec postgresql-primary-0 -- env PGPASSWORD=${POSTGRES_PASSWORD} psql -U admin -d db -c "GRANT ALL PRIVILEGES ON DATABASE keycloak-db TO keycloak-admin;"
 
