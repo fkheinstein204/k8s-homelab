@@ -21,4 +21,4 @@ spec:
           service:
             name: keycloak
             port:
-              name: http
+              number: 80
