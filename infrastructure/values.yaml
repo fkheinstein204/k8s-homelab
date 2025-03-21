@@ -125,12 +125,12 @@ applications:
     syncOptions:
       - CreateNamespace=true
 
-  #- name: vault
-  #  namespace: vault
-  #  path: infrastructure/vault
-  #  manifest-paths: /infrastructure/vault
-  #  sync-wave: "-4"
-  #  helm:
-  #    enabled: true
-  #  syncOptions:
-  #    - CreateNamespace=true
+  - name: vault
+    namespace: vault
+    path: infrastructure/vault
+    manifest-paths: /infrastructure/vault
+    sync-wave: "-4"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true

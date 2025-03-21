@@ -1,23 +1,27 @@
 vault:
   server:
+    affinity: ""
+
     extraEnvVars:
       - name: LOG_LEVEL
         value: trace
-
+        
     ha:
-      enabled: true
-      raft:
         enabled: true
-        setNodeId: true
-        config: |
-          cluster_name = "k8s-dev.devops.lab"
-          storage "raft" {
-            path    = "/vault/data/"
-          }
+        raft: 
+          enabled: true
+          setNodeId: true
+          config: |
+              cluster_name = "k8s-dev.devops.lab"
+              storage "raft" {
+                path    = "/vault/data/"
+              }
 
-          listener "tcp" {
-            address = "[::]:8200"
-            cluster_address = "[::]:8201"
-            tls_disable = "true"
-          }
-          service_registration "kubernetes" {}
+              listener "tcp" {
+                address = "[::]:8200"
+                cluster_address = "[::]:8201"
+                tls_disable = "true"
+              }
+              service_registration "kubernetes" {}
+
+
