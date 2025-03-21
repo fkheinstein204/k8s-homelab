@@ -10,7 +10,7 @@ vault:
         enabled: true
         setNodeId: true
         config: |
-          cluster_name = "vault-integrated-storage"
+          cluster_name = "k8s-dev.devops.lab"
           storage "raft" {
             path    = "/vault/data/"
           }
