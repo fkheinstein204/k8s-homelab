@@ -35,7 +35,7 @@ keycloak:
 
 
   externalDatabase:
-    host: "postgresql-primary-hl.database.svc.k8s-dev.devops.lab"
+    host: "postgresql.database.svc.k8s-dev.devops.lab"
     port: 5432
     user: "keycloak"
     password: null
