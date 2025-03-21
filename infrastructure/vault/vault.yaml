@@ -1,0 +1,32 @@
+apiVersion: v1
+data:
+  extraconfig-from-values.hcl: |-
+    cluster_name = "k8s-dev.devops.lab"
+    storage "raft" {
+      path    = "/vault/data/"
+    }
+
+    listener "tcp" {
+      address = "[::]:8200"
+      cluster_address = "[::]:8201"
+      tls_disable = "true"
+    }
+    service_registration "kubernetes" {}
+
+    disable_mlock = true
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"extraconfig-from-values.hcl":"cluster_name = \"k8s-dev.devops.lab\"\nstorage \"raft\" {\n  path    = \"/vault/data/\"\n}\n\nlistener \"tcp\" {\n  address = \"[::]:8200\"\n  cluster_address = \"[::]:8201\"\n  tls_disable = \"true\"\n}\nservice_registration \"kubernetes\" {}\n\ndisable_mlock = true"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"vault","app.kubernetes.io/managed-by":"Helm","app.kubernetes.io/name":"vault","argocd.argoproj.io/instance":"vault","helm.sh/chart":"vault-0.29.1"},"name":"vault-config","namespace":"vault"}}
+  creationTimestamp: "2025-03-21T14:52:51Z"
+  labels:
+    app.kubernetes.io/instance: vault
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: vault
+    argocd.argoproj.io/instance: vault
+    helm.sh/chart: vault-0.29.1
+  name: vault-config
+  namespace: vault
+  resourceVersion: "961773"
+  uid: 63042b38-6473-4dc4-a837-4320542488a1
