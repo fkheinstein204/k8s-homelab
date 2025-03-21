@@ -6,6 +6,9 @@ postgresql:
     existingSecret: postgresql-credentials
 
   architecture: replication
+  replication:
+    synchronousCommit: "off"
+    numSynchronousReplicas: 0
 
   primary:
     persistence:
@@ -26,10 +29,10 @@ postgresql:
     resources:
       limits:
         memory: "256Mi"
-        cpu: "200m"
+        cpu: "100m"
       requests:
         memory: "256Mi"
-        cpu: "200m"
+        cpu: "100m"
     persistence:
       enabled: true
       existingClaim: postgresql-pvc
