@@ -2,6 +2,8 @@ keycloak:
   global:
     storageClass: "nfs-k8sdev-client"
 
+  clusterDomain: k8s-dev.devops.lab
+
   auth:
     adminUser: admin
     existingSecret: keycloak-admin-password
