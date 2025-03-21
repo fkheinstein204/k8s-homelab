@@ -1,0 +1,5 @@
+vault:
+  server:
+    extraEnvVars:
+      - name: LOG_LEVEL
+        value: trace
