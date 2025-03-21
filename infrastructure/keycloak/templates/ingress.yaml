@@ -19,6 +19,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: keycloak
+            name: keycloak-headless
             port:
-              number: 80
+              number: 8080
