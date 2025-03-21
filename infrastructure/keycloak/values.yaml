@@ -50,6 +50,13 @@ keycloak:
     enabled: true
     size: "4Gi"
 
+  service:
+    type: ClusterIP
+    
+    ports:
+      http: 8080
+      https: 8443
+
   resources:
     limits:
       cpu: 2
