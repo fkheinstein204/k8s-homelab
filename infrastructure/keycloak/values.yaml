@@ -35,16 +35,20 @@ keycloak:
 
 
   externalDatabase:
-    existingSecret: postgresql-keycloak-credentials
     host: "postgresql-primary-hl.database.svc.k8s-dev.devops.lab"
     port: 5432
     user: "keycloak"
     password: null
+    existingSecret: postgresql-keycloak-credentials
     existingSecretPasswordKey: password
     database: "keycloakdb"
 
   postgresql:
       enabled: false
+
+  persistence:
+    enabled: true
+    size: "4Gi"
 
   resources:
     limits:
