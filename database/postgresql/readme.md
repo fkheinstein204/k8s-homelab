@@ -95,6 +95,5 @@ kubectl -n database exec postgresql-primary-0 -- env PGPASSWORD=${POSTGRES_PASSW
 
 
 echo $(kubectl get secret --namespace database postgresql-credentials -o jsonpath="{.data.postgres-password}" | base64 -d)
-kubectl exec -it postgresql-0 -n database -- psql -U postgres
-
+kubectl exec -it -n database postgresql-primary-0 -- psql -U postgres 
 ```

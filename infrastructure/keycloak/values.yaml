@@ -12,6 +12,26 @@ keycloak:
   # ref: https://www.keycloak.org/server/reverseproxy
   proxyHeaders: xforwarded
 
+  extraEnvVars:
+    - name: KEYCLOAK_ADMIN
+      value: admin
+    - name: KEYCLOAK_ADMIN_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: admin-password
+          name: keycloak-admin-password
+    - name: KC_PROXY
+      value: "edge"
+    - name: KC_HEALTH_ENABLED
+      value: "true"
+    - name: KC_METRICS_ENABLED
+      value: "true"
+    - name: KC_HOSTNAME_STRICT_HTTPS
+      value: "true"
+    - name: KC_LOG_LEVEL
+      value: INFO
+
+
   externalDatabase:
     existingSecret: postgresql-keycloak-credentials
     host: "postgresql-primary-hl.database.svc.k8s-dev.devops.lab"
@@ -19,9 +39,7 @@ keycloak:
     user: "keycloak"
     password: null
     existingSecretPasswordKey: password
-    database: "keycloak"
-
-
+    database: "keycloakdb"
 
   postgresql:
       enabled: false
