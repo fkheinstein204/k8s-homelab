@@ -28,11 +28,11 @@ applications:
     sync-wave: "-4"
 
 
-  #- name: prod-monitoring
-  #  namespace: argocd
-  #  path: monitoring/prod-cluster/
-  #  manifest-paths: /monitoring/prod-cluster/templates;/monitoring/prod-cluster/Chart.yaml;/monitoring/prod-cluster/values.yaml
-    #sync-wave: "-4"
+  - name: prod-monitoring
+    namespace: argocd
+    path: monitoring/prod-cluster/
+    manifest-paths: /monitoring/prod-cluster/templates;/monitoring/prod-cluster/Chart.yaml;/monitoring/prod-cluster/values.yaml
+    sync-wave: "-4"
 
 
   #- name: dev-monitoring
