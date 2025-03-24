@@ -5,6 +5,16 @@ repo:
 
 applications:
 
+  - name: grafana
+    namespace: grafana
+    path: monitoring/dev-cluster/grafana
+    manifest-paths: /monitoring/dev-cluster/grafana
+    sync-wave: "-1"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+
   - name: metrics-server-dev
     namespace: metrics-server
     path: monitoring/dev-cluster/metrics-server
@@ -13,4 +23,4 @@ applications:
     helm:
       enabled: true
     syncOptions:
-      - CreateNamespace=true
+      - CreateNamespace=true      
