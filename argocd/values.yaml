@@ -38,7 +38,7 @@ argocd:
         - hosts:
             - argocd.homelab.ftscode.de
           secretName: argocd-cert
-          
+
     resources:
       requests:
         cpu: 50m
