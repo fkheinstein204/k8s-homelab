@@ -16,7 +16,6 @@ applications:
       - CreateNamespace=true
 
 
-
   - name: influxdb
     namespace: influxdb
     path: monitoring/prod-cluster/influxdb

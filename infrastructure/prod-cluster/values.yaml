@@ -1,0 +1,46 @@
+repo:
+  url: https://github.com/fkheinstein204/k8s-homelab.git
+  revision: main
+
+
+applications:
+
+ # - name: cert-manager
+ #   namespace: cert-manager
+ #   path: infrastructure/cert-manager
+ #   manifest-paths: /infrastructure/cert-manager
+ #   sync-wave: "-4"
+ #   helm:
+ #     enabled: true
+ #   syncOptions:
+ #     - CreateNamespace=true
+
+  - name: metallb
+    namespace: metallb-system
+    path: infrastructure/metallb
+    manifest-paths: /infrastructure/metallb
+    sync-wave: "-5"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+
+  - name: ingress-nginx
+    namespace: ingress-nginx
+    path: infrastructure/ingress-nginx
+    manifest-paths: /infrastructure/ingress-nginx
+    sync-wave: "-4"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true      
+
+  - name: sealed-secrets
+    namespace: sealed-secrets
+    path: infrastructure/sealed-secrets
+    manifest-paths: /infrastructure/sealed-secrets
+    sync-wave: "-4"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true

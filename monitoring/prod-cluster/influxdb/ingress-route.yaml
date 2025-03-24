@@ -2,7 +2,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  namespace: monitoring
+  namespace: influxdb
   name: influxdb2-ingress-route
 
 spec:
@@ -13,6 +13,6 @@ spec:
       match: Host(`influxdb.homelab.ftscode.de`)
       services:
         - name: influxdb-influxdb2
-          namespace: monitoring
+          namespace: influxdb
           port: 80
           scheme: http

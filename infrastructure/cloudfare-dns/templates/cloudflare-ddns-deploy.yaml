@@ -20,7 +20,7 @@ spec:
             - name: TZ
               value: "Europe/Berlin"
             - name: DOMAINS
-              value: "dev.ftscode.de"
+              value: "prod.ftscode.de"
             - name: PROXIED
               value: "true"
           envFrom:

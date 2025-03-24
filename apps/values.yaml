@@ -20,6 +20,12 @@ applications:
     manifest-paths: /infrastructure/templates;/infrastructure/Chart.yaml;/infrastructure/values.yaml
     sync-wave: "-4"
 
+  - name: prod-infra
+    namespace: argocd
+    path: infrastructure/prod-cluster/
+    manifest-paths: /infrastructure/prod-cluster/templates;/infrastructure/prod-cluster/Chart.yaml;/infrastructure/prod-cluster/values.yaml
+    sync-wave: "-4"
+
 
   - name: database
     namespace: argocd
