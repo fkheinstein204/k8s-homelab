@@ -41,7 +41,7 @@ keycloak:
     password: null
     existingSecret: postgresql-keycloak-credentials
     existingSecretPasswordKey: password
-    database: "keycloak"
+    database: "keycloakdb"
 
   postgresql:
       enabled: false

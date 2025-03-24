@@ -27,7 +27,7 @@ Create secret for credentials
 
 
 CREATE DATABASE keycloak;
-CREATE USER keycloak WITH ENCRYPTED PASSWORD 'IHJ+85cZttwhb20T09XwG5vpjWt0b/4f7PxvwWcPHOE=';
+CREATE USER keycloak WITH ENCRYPTED PASSWORD 'IHJ+85cZttwhb20T09sdsXwG5vpjWt0b/4f7PxvwWcPHOE=';
 GRANT ALL PRIVILEGES ON DATABASE keycloak TO keycloak;
 ALTER DATABASE keycloak OWNER TO keycloak;
 
