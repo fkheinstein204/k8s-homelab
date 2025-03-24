@@ -12,6 +12,10 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - argocd-dev.homelab.ftscode.de
+        secretName: argocd-server-tls # as expected by argocd-server
   rules:
   - host: argocd-dev.homelab.ftscode.de
     http:
@@ -23,7 +27,3 @@ spec:
             name: argocd-server
             port:
               name: https
-  tls:
-  - hosts:
-    - argocd-dev.homelab.ftscode.de
-    secretName: argocd-server-tls # as expected by argocd-server
