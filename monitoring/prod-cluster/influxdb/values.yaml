@@ -1,0 +1,30 @@
+influxdb2:
+  adminUser:
+    organization: "influxdata"
+    user: "admin"
+
+
+  env:
+    - name: TZ
+      value: Europe/Zurich
+
+
+  persistence:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 20Gi
+    storageClass: nfs-qnap-client
+  resources:
+    requests:
+      memory: 2000Mi
+      cpu: 100m
+    limits:
+      memory: 4000Mi
+  livenessProbe:
+    timeoutSeconds: 30
+  readinessProbe:
+    timeoutSeconds: 30
+  startupProbe:
+    enabled: true
+    failureThreshold: 30
+    periodSeconds: 30

@@ -5,11 +5,23 @@ repo:
 
 applications:
 
-  - name: metrics-server-prod
-    namespace: metrics-server
-    path: monitoring/prod-cluster/metrics-server
-    manifest-paths: /monitoring/prod-cluster/metrics-server
-    sync-wave: "-1"
+  - name: grafana
+    namespace: grafana
+    path: monitoring/prod-cluster/grafana
+    manifest-paths: /monitoring/prod-cluster/grafana
+    sync-wave: "-3"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+
+
+
+  - name: influxdb
+    namespace: influxdb
+    path: monitoring/prod-cluster/influxdb
+    manifest-paths: /monitoring/prod-cluster/influxdb
+    sync-wave: "-3"
     helm:
       enabled: true
     syncOptions:
