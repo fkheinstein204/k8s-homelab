@@ -5,15 +5,15 @@ repo:
 
 applications:
 
- # - name: cert-manager
- #   namespace: cert-manager
- #   path: infrastructure/cert-manager
- #   manifest-paths: /infrastructure/cert-manager
- #   sync-wave: "-4"
- #   helm:
- #     enabled: true
- #   syncOptions:
- #     - CreateNamespace=true
+  - name: cert-manager
+    namespace: cert-manager
+    path: infrastructure/cert-manager
+    manifest-paths: /infrastructure/cert-manager
+    sync-wave: "-4"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
 
   - name: metallb
     namespace: metallb-system
@@ -33,14 +33,14 @@ applications:
     helm:
       enabled: true
     syncOptions:
-      - CreateNamespace=true      
+      - CreateNamespace=true
 
   - name: sealed-secrets
-    namespace: sealed-secrets
+    namespace: kube-system
     path: infrastructure/sealed-secrets
     manifest-paths: /infrastructure/sealed-secrets
-    sync-wave: "-4"
+    sync-wave: "-5"
     helm:
       enabled: true
     syncOptions:
-      - CreateNamespace=true
+      - CreateNamespace=false
