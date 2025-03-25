@@ -24,15 +24,15 @@ applications:
     syncOptions:
       - CreateNamespace=false
 
-#  - name: cloudfare-dns
-#    namespace: cert-manager
-#    path: infrastructure/cloudfare-dns
-#    manifest-paths: /infrastructure/cloudfare-dns
-#    sync-wave: "-5"
-#    helm:
-#      enabled: true
-#    syncOptions:
-#      - CreateNamespace=true
+  - name: cloudfare-dns
+    namespace: cert-manager
+    path: infrastructure/cloudfare-dns
+    manifest-paths: /infrastructure/cloudfare-dns
+    sync-wave: "-5"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
 
   - name: metallb
     namespace: metallb-system
