@@ -21,7 +21,21 @@ kubectl exec --namespace='vault' vault-0 -- vault operator unseal <UnsealKey1>
 kubectl exec --namespace='vault' vault-0 -- vault operator unseal <UnsealKey2>
 kubectl exec --namespace='vault' vault-0 -- vault operator unseal <UnsealKey3>
 
+
+$ kubectl -n vault exec -it vault-0 -- vault operator unseal
+$ kubectl -n vault exec -it vault-0 -- vault operator unseal
+$ kubectl -n vault exec -it vault-0 -- vault operator unseal
+$ kubectl -n vault exec -ti vault-1 -- vault operator raft join http://vault-0.vault-internal:8200
+$ kubectl -n vault exec -it vault-1 -- vault operator unseal
+$ kubectl -n vault exec -it vault-1 -- vault operator unseal
+$ kubectl -n vault exec -it vault-1 -- vault operator unseal
+$ kubectl -n vault exec -ti vault-2 -- vault operator raft join http://vault-0.vault-internal:8200
+$ kubectl -n vault exec -it vault-2 -- vault operator unseal
+$ kubectl -n vault exec -it vault-2 -- vault operator unseal
+$ kubectl -n vault exec -it vault-2 -- vault operator unseal
+
 ```
+
 
 ### Check Status
 
@@ -64,6 +78,19 @@ kubectl exec --namespace='vault' vault-0 -- vault write auth/kubernetes/config \
   kubernetes_host="$KUBERNETES_HOST" \
   kubernetes_ca_cert=@/path/to/ca.crt
 ```
+
+vault policy write internal-app - <<EOF
+ path "internal/data/database/config" {
+ capabilities = ["read"]
+ }
+EOF
+
+vault write auth/kubernetes/role/internal-app \
+  bound_service_account_names=internal-app \
+  bound_service_account_namespaces=default \
+  policies=internal-app \
+  ttl=24h
+
 
 ### PostgreSQL
 
